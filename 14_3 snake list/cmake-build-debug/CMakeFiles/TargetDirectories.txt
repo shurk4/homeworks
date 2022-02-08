@@ -1,0 +1,3 @@
+E:/Skillbox/homeworks/14_3 snake list/cmake-build-debug/CMakeFiles/14_3_snake_list.dir
+E:/Skillbox/homeworks/14_3 snake list/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/Skillbox/homeworks/14_3 snake list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
