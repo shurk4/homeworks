@@ -52,8 +52,8 @@ void pop(){
 
 bool popitCheck(){
     bool check = false;
-    for(int i = x1 - 1; i < 12; i++){
-        for(int j = y1 - 1; j < 12; j++){
+    for(int i = 0 - 1; i < 12; i++){
+        for(int j = 0; j < 12; j++){
             if(popit[i][j]){
                 check = true;
                 break;
