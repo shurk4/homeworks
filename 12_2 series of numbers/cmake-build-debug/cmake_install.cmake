@@ -1,4 +1,4 @@
-# Install script for directory: E:/Skillbox/12_2 series of numbers
+# Install script for directory: E:/Skillbox/homeworks/12_2 series of numbers
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/Skillbox/12_2 series of numbers/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/Skillbox/homeworks/12_2 series of numbers/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

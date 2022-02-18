@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = E$:/Skillbox/12_3$ sort/cmake-build-debug/
+cmake_ninja_workdir = E$:/Skillbox/homeworks/12_3$ sort/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "E:\Skillbox\12_3 sort\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"E:\Skillbox\12_3 sort" -B"E:\Skillbox\12_3 sort\cmake-build-debug""
+  COMMAND = cmd.exe /C "cd /D "E:\Skillbox\homeworks\12_3 sort\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"E:\Skillbox\homeworks\12_3 sort" -B"E:\Skillbox\homeworks\12_3 sort\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -61,7 +61,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_12_3_sort: phony || CMakeFiles/12_3_sort.dir
 
-build CMakeFiles/12_3_sort.dir/main.cpp.obj: CXX_COMPILER__12_3_sort_Debug E$:/Skillbox/12_3$ sort/main.cpp || cmake_object_order_depends_target_12_3_sort
+build CMakeFiles/12_3_sort.dir/main.cpp.obj: CXX_COMPILER__12_3_sort_Debug E$:/Skillbox/homeworks/12_3$ sort/main.cpp || cmake_object_order_depends_target_12_3_sort
   DEP_FILE = CMakeFiles\12_3_sort.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\12_3_sort.dir
@@ -93,7 +93,7 @@ build 12_3_sort.exe: CXX_EXECUTABLE_LINKER__12_3_sort_Debug CMakeFiles/12_3_sort
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "E:\Skillbox\12_3 sort\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D "E:\Skillbox\homeworks\12_3 sort\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -110,7 +110,7 @@ build 12_3_sort: phony 12_3_sort.exe
 # =============================================================================
 
 #############################################
-# Folder: E:/Skillbox/12_3 sort/cmake-build-debug
+# Folder: E:/Skillbox/homeworks/12_3 sort/cmake-build-debug
 
 build all: phony 12_3_sort.exe
 

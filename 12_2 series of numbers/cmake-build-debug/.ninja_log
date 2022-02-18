@@ -1,13 +1,5 @@
 # ninja log v5
-0	371	6646527803794597	CMakeFiles/12_2_series_of_numbers.dir/main.cpp.obj	d0da58756ac68e50
-373	502	6646527805114597	12_2_series_of_numbers.exe	29c3b04b5acdfdec
-3	349	6646528093070608	CMakeFiles/12_2_series_of_numbers.dir/main.cpp.obj	d0da58756ac68e50
-350	464	6646528094190592	12_2_series_of_numbers.exe	29c3b04b5acdfdec
-3	344	6646528987906533	CMakeFiles/12_2_series_of_numbers.dir/main.cpp.obj	d0da58756ac68e50
-344	488	6646528989346517	12_2_series_of_numbers.exe	29c3b04b5acdfdec
-2	344	6646529081427288	CMakeFiles/12_2_series_of_numbers.dir/main.cpp.obj	d0da58756ac68e50
-345	456	6646529082527263	12_2_series_of_numbers.exe	29c3b04b5acdfdec
-3	357	6646530369857395	CMakeFiles/12_2_series_of_numbers.dir/main.cpp.obj	d0da58756ac68e50
-357	487	6646530371187393	12_2_series_of_numbers.exe	29c3b04b5acdfdec
 3	378	6646530611457405	CMakeFiles/12_2_series_of_numbers.dir/main.cpp.obj	d0da58756ac68e50
 378	516	6646530612817369	12_2_series_of_numbers.exe	29c3b04b5acdfdec
+3	317	6662875192758408	CMakeFiles/12_2_series_of_numbers.dir/main.cpp.obj	131420e1775786fa
+318	427	6662875193838404	12_2_series_of_numbers.exe	29c3b04b5acdfdec
