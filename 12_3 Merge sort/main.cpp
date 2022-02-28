@@ -38,22 +38,24 @@ void mergeSort(std::vector<float> &vec_1, int start, int end) {
     }
 }
 
-int main()
-{
-//    std::vector<float> vec {1.2, 2.3, 1.11, 3.4, 5.5, 5.4, 5.3, 5.1, 1.5, 1.25, 5.41, 5.31, 5.11, 1.51, 1.251};
-    std::vector<float> vec (15);
-    std::cout << "Input 15 numbers:\n";
-
-    for (int i = 0; i < vec.size(); i++)
-        std::cin >> vec[i];
-
+void vecPrint(std::vector<float> vec){
     for (int i = 0; i < vec.size(); i++)
         std::cout << vec[i] << " ";
     std::cout << "\n";
+}
+
+int main()
+{
+    std::vector<float> vec {1.2, 2.3, 1.11, 3.4, 5.5, 5.4, 5.3, 5.1, 1.5, 1.25, 5.41, 5.31, 5.11, 1.51, 1.251};
+//    std::vector<float> vec (15);
+//    std::cout << "Input 15 numbers:\n";
+//    for (int i = 0; i < vec.size(); i++)
+//        std::cin >> vec[i];
+
+    vecPrint(vec);
 
     mergeSort(vec, 0, vec.size());
 
-    for (int i = 0; i < vec.size(); i++)
-        std::cout << vec[i] << " ";
-    std::cout << "\n";
+    std::cout << "Sorted array is \n";
+    vecPrint(vec);
 }
