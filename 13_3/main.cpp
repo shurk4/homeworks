@@ -13,6 +13,7 @@ int main() {
     do {
         std::cout << "Enter the humber: ";
         std::cin >> num;
+
         if (num == -1)
             vecPrint(nums);
         else if (num == -2) break;
