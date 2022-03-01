@@ -19,10 +19,8 @@ int main() {
         else if (num == -2) break;
         else if (nums.size() < 20) nums.push_back(num);
         else {
-            for (int i = 0; i < 19; i++){
-                nums[i] = nums[i + 1];
-            }
-            nums[19] = num;
+            nums.erase(nums.begin());
+            nums.push_back(num);
         }
     } while (num != -2 || num < -2);
 
