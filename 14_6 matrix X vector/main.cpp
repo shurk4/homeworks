@@ -48,6 +48,7 @@ int main() {
     vectorPrint(v);
 
     mult();
+    std::cout << "==============================\n";
     vectorPrint(r);
     return 0;
 }
