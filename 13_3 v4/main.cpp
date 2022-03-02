@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-int maxSize = 10;
+int maxSize = 20;
 
 void vecPrint(std::vector<int> vec, int counter){
         if(vec[counter] == -3) {
