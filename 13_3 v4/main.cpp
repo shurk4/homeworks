@@ -15,14 +15,12 @@ void vecPrint(std::vector<int> vec, int counter){
                 std::cout << vec[i] << " ";
             std::cout << "\n";
         }
-
 }
 
 int main() {
     std::vector<int> nums(maxSize, -3);
     int counter = 0;
     int num;
-
 
     do {
         std::cout << "Enter the humber: ";
