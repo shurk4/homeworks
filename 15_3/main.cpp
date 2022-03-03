@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
 
-void mergeSort(std::vector<int> vec_1, int start, int end) {
-
+void mergeSort(std::vector<int> &vec_1, int start, int end) {
     if (end - start < 2) {
         return;
     }
@@ -38,30 +37,6 @@ void mergeSort(std::vector<int> vec_1, int start, int end) {
     }
 }
 
-void vecPrint(std::vector<float> vec){
-    for (int i = 0; i < vec.size(); i++)
-        std::cout << vec[i] << " ";
-    std::cout << "\n";
-}
-
-//С клавиатуры вводятся числа.
-// Когда пользователь вводит -1 -- необходимо выводить на экран пятое по возрастанию число среди введённых.
-// Когда пользователь вводит -2 -- программа завершает работу.
-//
-//Пример:
-//
-//ввод: 7 5 3 1 2 4 6 -1
-//
-//вывод: 5 (в отсортированном виде массив выглядит так: {1,2,3,4,5,6,7})
-//
-//ввод: 1 1 1 -1
-//
-//вывод: 2 (в отсортированном виде массив выглядит так: {1,1,1,1,2,3,4,5,6,7})
-//
-//ввод -2
-//
-//завершение программы
-
 void masPrint(std::vector<int> mas){
     for(int i = 0; i < mas.size(); i++)
         std::cout << mas[i] << " ";
@@ -69,24 +44,29 @@ void masPrint(std::vector<int> mas){
 }
 
 int main() {
-    std::vector <int> mas(5);
+    std::vector <int> mas;
+    int num;
     int i = 0;
 
     do {
-        std::cout << "I = " << i << "\n";
         std::cout << "Input number:\n";
-        std::cin >> mas[i];
-        if(mas[i] == -1){
-            if (i < 5) continue;
+        std::cin >> num;
+        if(num == -1){
+            if (i < 5) {
+                std::cout << "Not enough numbers\n";
+                continue;
+            }
             else {
                 mergeSort(mas, 0, mas.size());
+                std::cout << "Sorted array:\n";
                 masPrint(mas);
+                std::cout << "The fifth ascending number :" << mas[4] << "\n";
             }
         } else {
+            mas.push_back(num);
             i++;
         }
-    } while (mas[i] > -2);
+    } while (num > -2);
     return 0;
-
 }
 
