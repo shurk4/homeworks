@@ -1,22 +1,22 @@
 #include <iostream>
 #include <vector>
 
-int main() {
-    int size, sum;
+void masInput(std::vector<int> &mas, int &size){
+    int num;
     do {
-        std::cout << "Input size of massive: ";
+        std::cout << "Input size of array: ";
         std::cin >> size;
         if(size < 1) std::cout << "Wront input!\n";
     } while (size < 1);
-    std::vector <int> mas (size);
 
     std::cout << "Input " << size << " numbers:\n";
-    for(int i = 0; i < size; i++)
-        std::cin >> mas[i];
+    for(int i = 0; i < size; i++) {
+        std::cin >> num;
+        mas.push_back(num);
+    }
+}
 
-    std::cout << "Input sum:\n";
-    std::cin >> sum;
-
+void result(std::vector<int> mas, int sum){
     for(int i = 0; i < mas.size(); i++){
         int j = i + 1;
         while(mas[i] + mas[j] != sum && j < mas.size()) j++;
@@ -25,5 +25,18 @@ int main() {
             break;
         }
     }
+}
+
+int main() {
+    int size, sum;
+    std::vector <int> mas;
+
+    masInput(mas, size);
+
+    std::cout << "Input sum:\n";
+    std::cin >> sum;
+
+    result(mas, sum);
+
     return 0;
 }
