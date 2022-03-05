@@ -38,6 +38,21 @@ void mergeSort(std::vector<int> &vec_1, int start, int end) {
     }
 }
 
+void masInput(std::vector<int> &mas){
+    int num, size;
+    do {
+        std::cout << "Input size of array: ";
+        std::cin >> size;
+        if(size < 1) std::cout << "Wront input!\n";
+    } while (size < 1);
+
+    std::cout << "Input " << size << " numbers:\n";
+    for(int i = 0; i < size; i++) {
+        std::cin >> num;
+        mas.push_back(num);
+    }
+}
+
 void masPrint(std::vector<int> mas){
     for(int i = 0; i < mas.size(); i++)
         std::cout << mas[i] << " ";
@@ -45,12 +60,14 @@ void masPrint(std::vector<int> mas){
 }
 
 int main() {
-    std::vector <int> mas {-100,-50, -5, 1, 10, 15};
+//    std::vector <int> mas {-100,-50, -5, 1, 10, 15};
 //    std::vector <int> mas {-100,-50, -5, 1, 10, -16, 24, -3, 12, 15, -6, -11, 97};
-    int num;
-    int i = 0;
+
+    std::vector <int> mas;
+    masInput(mas);
 
     mergeSort(mas, 0, mas.size());
+
     std::cout << "Sorted array:\n";
     masPrint(mas);
 
