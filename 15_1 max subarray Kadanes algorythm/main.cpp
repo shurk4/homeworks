@@ -24,32 +24,31 @@ void masPrint(std::vector<int> mas){
 
 
 int main() {
-//    std::vector <int> mas;
+    std::vector <int> mas;
 //    std::vector <int> mas {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-    std::vector <int> mas {7, -5, 1, -3, 4, -1, 8, -2, 2, 1, -5, 4};
+//    std::vector <int> mas {7, -5, 1, -3, 4, -1, 8, -2, 2, 1, -5, 4};
 //    std::vector <int> mas {7, 5, 1, -33, 4, 1, 8, -22, 2, 1, 5, 4};
-    int min = 0, max = 0, minResult = 0, maxResult = 0;
-    int minIndex = mas.size() - 1, maxIndex = 0;
-    int result = 0;
 
-//    masInput(mas);
+    int minIndex = 0, minIndexTemp = 0, maxIndex = 0;
+    int result = 0, resultTemp = 0;
+
+    masInput(mas);
     masPrint(mas);
 
-    for (int i = 0; i < mas.size(); i++){
-        min += mas[mas.size() - i - 1];
-        max += mas[i];
-        if(min > minResult){
-            minResult = min;
-            minIndex = mas.size() - i - 1;
-        }
-        if(max > maxResult){
-            maxResult = max;
+    for(int i = 0; i < mas.size(); i++){
+        resultTemp += mas[i];
+
+        if(resultTemp > result){
+            result = resultTemp;
+            minIndex = minIndexTemp;
             maxIndex = i;
         }
-    }
 
-    for (int i = minIndex; i <= maxIndex; i++)
-        result += mas[i];
+        if (resultTemp < 0) {
+            resultTemp = 0;
+            minIndexTemp = i + 1;
+        }
+    }
 
     std::cout << "minIndex = " << minIndex << "\n";
     std::cout << "maxIndex = " << maxIndex << "\n";
