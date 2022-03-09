@@ -22,7 +22,6 @@ void masPrint(std::vector<int> mas){
     std::cout << "\n";
 }
 
-
 int main() {
     std::vector <int> mas;
 //    std::vector <int> mas {-2, 1, -3, 4, -1, 2, 1, -5, 4};
