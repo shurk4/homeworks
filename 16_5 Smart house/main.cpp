@@ -47,7 +47,6 @@ bool lightOff(std::string &light){
 bool insideHeating(float temp){
     return (temp < 22 || (state & HOME_HEATING && temp < 25));
 }
-
 bool insideCool(float temp){
     return (temp >= 30 || (state & CONDITIONER && temp > 25));
 }
@@ -56,8 +55,10 @@ void statePrint() {
     std::cout << "==============================================" << std::endl;
     std::cout << "\tGENERAL\t\t\t" << ((state & GENERAL) ? "on\n" : "off\n");
     std::cout << "\tOUTLETS\t\t\t" << ((state & OUTLETS) ? "on\n" : "off\n");
+
     std::cout << "\tINSIDE LIGHT\t\t" << ((state & INSIDE_LIGHT) ? "on\n" : "off\n");
     if(state & INSIDE_LIGHT) std::cout << "\tINSIDE LIGHT TEMP\t" << lightTemp << std::endl;
+
     std::cout << "\tOUTSIDE LIGHT\t\t" << ((state & OUTSIDE_LIGHT) ? "on\n" : "off\n");
     std::cout << "\tHOME HEATING\t\t" << ((state & HOME_HEATING) ? "on\n" : "off\n");
     std::cout << "\tWATER SUPPLY HEATING\t" << ((state & WATER_SUPPLY_HEATING) ? "on\n" : "off\n");
@@ -65,12 +66,6 @@ void statePrint() {
 }
 
 void triggers(){
-    if(evening(currentTime)){
-        lightTemp -= lightStep;
-    } else if(currentTime == 0){
-        lightTemp = lightTempMax;
-    }
-
     if(lightOn(light)){
         state |= INSIDE_LIGHT;
         std::cout << "\tThe inside light is on" << std::endl;
@@ -79,6 +74,18 @@ void triggers(){
     if(lightOff(light)){
         state &= (~INSIDE_LIGHT);
         std::cout << "\tThe inside light is off" << std::endl;
+    }
+
+    if(evening(currentTime)){
+        lightTemp -= lightStep;
+        if(state & INSIDE_LIGHT){
+            std::cout << "   The inside lighting temperature changed to " << lightTemp << "k" << std::endl;
+        }
+    } else if(currentTime == 0){
+        lightTemp = lightTempMax;
+        if((state & INSIDE_LIGHT) && day > 0){
+            std::cout << "   The inside lighting temperature changed to " << lightTemp << "k" << std::endl;
+        }
     }
 
     if(winter(outsideTemp) && !(state & WATER_SUPPLY_HEATING)){
@@ -118,16 +125,13 @@ void triggers(){
     }
 }
 
-// ================= MAIN
 int main() {
-
     state |= GENERAL;
     state |= OUTLETS;
 
     std::cout << "==============================================" << std::endl;
     std::cout << "--------- Welcome to the smart home! ---------" << std::endl;
 
-    //============ WHILE
     while(day < 2){
         std::stringstream inStream;
 
@@ -141,9 +145,10 @@ int main() {
         inStream << input;
 
         inStream >> outsideTemp >> insideTemp >> move >> light;
-        triggers();
 
+        triggers();
         statePrint();
+
         currentTime++;
 
         if(currentTime == 24) {
@@ -151,7 +156,6 @@ int main() {
             day++;
         }
     }
-
     std::cout << "==================== BYE! =====================" << std::endl;
     return 0;
 }
