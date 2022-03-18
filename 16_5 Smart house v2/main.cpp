@@ -3,13 +3,13 @@
 #include <string>
 
 int state,
-    day = 0,
-    currentTime = 0,
-    insideTemp = 25,
-    outsideTemp = 10,
-    lightTempMax = 5000,
-    lightTemp = lightTempMax,
-    lightStep = (lightTemp - 2700) / 4;
+        day = 0,
+        currentTime = 0,
+        insideTemp = 25,
+        outsideTemp = 10,
+        lightTempMax = 5000,
+        lightTemp = lightTempMax,
+        lightStep = (lightTemp - 2700) / 4;
 
 std::string input,
         move,
@@ -51,25 +51,26 @@ bool insideCool(float temp){
     return (temp >= 30 || (state & CONDITIONER && temp > 25));
 }
 
-void statePrint() {
-    std::cout << "==============================================" << std::endl;
-    std::cout << "\tGENERAL\t\t\t" << ((state & GENERAL) ? "on\n" : "off\n");
-    std::cout << "\tOUTLETS\t\t\t" << ((state & OUTLETS) ? "on\n" : "off\n");
-
-    std::cout << "\tINSIDE LIGHT\t\t" << ((state & INSIDE_LIGHT) ? "on\n" : "off\n");
-    if(state & INSIDE_LIGHT) std::cout << "\tINSIDE LIGHT TEMP\t" << lightTemp << std::endl;
-
-    std::cout << "\tOUTSIDE LIGHT\t\t" << ((state & OUTSIDE_LIGHT) ? "on\n" : "off\n");
-    std::cout << "\tHOME HEATING\t\t" << ((state & HOME_HEATING) ? "on\n" : "off\n");
-    std::cout << "\tWATER SUPPLY HEATING\t" << ((state & WATER_SUPPLY_HEATING) ? "on\n" : "off\n");
-    std::cout << "\tCONDITIONER\t\t" << ((state & CONDITIONER) ? "on\n" : "off\n");
-}
+//void statePrint() {
+//    std::cout << "==============================================" << std::endl;
+//    std::cout << "\tGENERAL\t\t\t" << ((state & GENERAL) ? "on\n" : "off\n");
+//    std::cout << "\tOUTLETS\t\t\t" << ((state & OUTLETS) ? "on\n" : "off\n");
+//
+//    std::cout << "\tINSIDE LIGHT\t\t" << ((state & INSIDE_LIGHT) ? "on\n" : "off\n");
+//    if(state & INSIDE_LIGHT) std::cout << "\tINSIDE LIGHT TEMP\t" << lightTemp << std::endl;
+//
+//    std::cout << "\tOUTSIDE LIGHT\t\t" << ((state & OUTSIDE_LIGHT) ? "on\n" : "off\n");
+//    std::cout << "\tHOME HEATING\t\t" << ((state & HOME_HEATING) ? "on\n" : "off\n");
+//    std::cout << "\tWATER SUPPLY HEATING\t" << ((state & WATER_SUPPLY_HEATING) ? "on\n" : "off\n");
+//    std::cout << "\tCONDITIONER\t\t" << ((state & CONDITIONER) ? "on\n" : "off\n");
+//}
 
 void triggers(){
+    std::cout << "==============================================" << std::endl;
     if(lightOn(light)){
         state |= INSIDE_LIGHT;
         std::cout << "\tINSIDE LIGHT\t\t" << ((state & INSIDE_LIGHT) ? "on\n" : "off\n");
-        std::cout << "\tINSIDE LIGHT TEMP\t" << lightTemp << "k" << std::endl;
+//        std::cout << "   The inside lighting temperature is " << lightTemp << "k" << std::endl;
     }
     if(lightOff(light)){
         state &= (~INSIDE_LIGHT);
@@ -79,49 +80,49 @@ void triggers(){
     if(evening(currentTime)){
         lightTemp -= lightStep;
         if(state & INSIDE_LIGHT){
-            std::cout << "\tINSIDE LIGHT TEMP\t" << lightTemp << "k" << std::endl;
+            std::cout << "   The inside lighting temperature changed to " << lightTemp << "k" << std::endl;
         }
     } else if(currentTime == 0){
         lightTemp = lightTempMax;
         if((state & INSIDE_LIGHT) && day > 0){
-            std::cout << "\tINSIDE LIGHT TEMP\t" << lightTemp << "k" << std::endl;
+            std::cout << "   The inside lighting temperature changed to " << lightTemp << "k" << std::endl;
         }
     }
 
     if(winter(outsideTemp) && !(state & WATER_SUPPLY_HEATING)){
         state |= WATER_SUPPLY_HEATING;
-        std::cout << "\tWATER SUPPLY HEATING\t" << ((state & WATER_SUPPLY_HEATING) ? "on\n" : "off\n");
+        std::cout << "\tThe water supply heating is on" << std::endl;
     }
     if(!winter(outsideTemp) && (state & WATER_SUPPLY_HEATING)) {
         state &= (~WATER_SUPPLY_HEATING);
-        std::cout << "\tWATER SUPPLY HEATING\t" << ((state & WATER_SUPPLY_HEATING) ? "on\n" : "off\n");
+        std::cout << "\tThe water supply heating is off" << std::endl;
     }
 
     if(night(currentTime) && moveSensor(move) && !(state & OUTSIDE_LIGHT)){
         state |= OUTSIDE_LIGHT;
-        std::cout << "\tOUTSIDE LIGHT\t\t" << ((state & OUTSIDE_LIGHT) ? "on\n" : "off\n");
+        std::cout << "\tThe outside light is on" << std::endl;
     }
     if((!night(currentTime) || !moveSensor(move))&& (state & OUTSIDE_LIGHT)) {
         state &= (~OUTSIDE_LIGHT);
-        std::cout << "\tOUTSIDE LIGHT\t\t" << ((state & OUTSIDE_LIGHT) ? "on\n" : "off\n");
+        std::cout << "\tThe outside light is off" << std::endl;
     }
 
     if(insideHeating(insideTemp) && !(state & HOME_HEATING)){
         state |= HOME_HEATING;
-        std::cout << "\tHOME HEATING\t\t" << ((state & HOME_HEATING) ? "on\n" : "off\n");
+        std::cout << "\tThe home heating is on" << std::endl;
     }
     if(!insideHeating(insideTemp) && (state & HOME_HEATING)){
         state &= (~HOME_HEATING);
-        std::cout << "\tHOME HEATING\t\t" << ((state & HOME_HEATING) ? "on\n" : "off\n");
+        std::cout << "\tThe home heating is off" << std::endl;
     }
 
     if(insideCool(insideTemp) && !(state & CONDITIONER)){
         state |= CONDITIONER;
-        std::cout << "\tCONDITIONER\t\t" << ((state & CONDITIONER) ? "on\n" : "off\n");
+        std::cout << "\tThe conditioner is on" << std::endl;
     }
     if(!insideCool(insideTemp) && (state & CONDITIONER)){
         state &= (~CONDITIONER);
-        std::cout << "\tCONDITIONER\t\t" << ((state & CONDITIONER) ? "on\n" : "off\n");
+        std::cout << "\tThe conditioner is off" << std::endl;
     }
 }
 
@@ -131,7 +132,6 @@ int main() {
 
     std::cout << "==============================================" << std::endl;
     std::cout << "--------- Welcome to the smart home! ---------" << std::endl;
-    statePrint();
 
     while(day < 2){
         std::stringstream inStream;
@@ -148,6 +148,7 @@ int main() {
         inStream >> outsideTemp >> insideTemp >> move >> light;
 
         triggers();
+//        statePrint();
 
         currentTime++;
 
