@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdio>
 #include <sstream>
 
 bool itAction(char c) {
