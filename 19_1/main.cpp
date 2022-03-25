@@ -6,6 +6,7 @@
 int main() {
     std::ifstream file;
     std::vector<std::string> text;
+
     file.open("text.txt");
 
     while(!file.eof()){
