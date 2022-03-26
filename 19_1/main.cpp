@@ -3,21 +3,50 @@
 #include <vector>
 #include <fstream>
 
-int main() {
-    std::ifstream file;
-    std::vector<std::string> text;
+void findMatches(std::string str, std::string substr, int& counter)
+{
+    std::vector<int> matches;
+    std::vector<int> p(substr.size() + 1, -1);
 
-    file.open("text.txt");
+    for (int i = 0, j = -1;i < substr.size();){
+        while (j > -1 && substr[i] != substr[j]) j = p[j];
+
+        i++;
+        j++;
+        p[i] = j;
+    }
+
+    for (int i=0, j = 0;i < str.size();)
+    {
+        while (j > -1 && str[i] != substr[j]) j = p[j];
+
+        i++;
+        j++;
+        if (j == substr.size()) counter++;
+    }
+}
+
+bool openFile (std::string& text){
+    std::ifstream file;
+    file.open("E:\\Skillbox\\homeworks\\19_1\\text.txt"); //Пришлось писать полный путь, иначе IDE наглухо зависала
 
     while(!file.eof()){
         std::string word;
         file >> word;
-        text.push_back(word);
+        text += word + " ";
     }
+    file.close();
+}
 
-    for(int i = 0; i < text.size(); i++){
-        std::cout << text[i] << " ";
-    }
+int main() {
+    int count = 0;
+    std::string text, find = "roads";
+
+    openFile(text);
+
+    findMatches(text, find, count);
+
+    std::cout << count << " matches found" << std::endl;
 
     return 0;
 }
