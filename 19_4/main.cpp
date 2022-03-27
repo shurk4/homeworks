@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-// ..\\text.txt
+//  ..\\file.png
 
 void fileOpen (std::string& path){
     std::ifstream file;
@@ -19,21 +19,22 @@ void fileOpen (std::string& path){
     std::cout << "====================" << std::endl;
 }
 
-void fileCout (std::string& path){
-    std::ifstream file(path , std::ios::binary);
-    int cursor = 0;
+bool checkPNG (std::string& path){
+    std::ifstream file(path);
+    std::string ext;
+    char buffer[4];
 
-    while(!file.eof()) {
-        char buff[20]{0};
-
-        file.seekg(cursor);
-        file.read(buff, sizeof(buff) - 1);
-
-        cursor = file.tellg();
-
-        std::cout << buff;
-    }
+    file.read(buffer, 4);
     file.close();
+
+    int num = buffer[0];
+
+    ext += buffer[1];
+    ext += buffer[2];
+    ext += buffer[3];
+
+    if(num != -119 || ext != "PNG") return false;
+    else return true;
 }
 
 int main() {
@@ -41,7 +42,8 @@ int main() {
 
     fileOpen(path);
 
-    fileCout(path);
+    if(checkPNG(path)) std::cout << "This file has a PNG extension" << std::endl;
+    else std::cout << "This file is not PNG" << std::endl;
 
     return 0;
 }
