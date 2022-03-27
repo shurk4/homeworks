@@ -50,10 +50,10 @@ double salaryExpense (std::vector<double>& salary){
     return salaryEx;
 }
 
-double salaryMax (std::vector<double>& salary){
-    double salaryMax = salary[0];
+int salaryMax (std::vector<double>& salary){
+    int salaryMax = 0;
     for(int i = 0; i < salary.size(); i++){
-        if(salary[i] > salaryMax) salaryMax = salary[i];
+        if(salary[i] > salary[salaryMax]) salaryMax = i;
     }
     return salaryMax;
 }
@@ -77,7 +77,9 @@ int main() {
     std::cout << "==========================================" << std::endl;
 
     std::cout << "Salary expence: \t" << salaryExpense(salary) << std::endl;
-    std::cout << "The highest salary: \t" << salaryMax(salary) << std::endl;
+
+    int sm = salaryMax(salary);
+    std::cout << "The highest salary have: " << firstName[sm] << " " << lastName[sm] << " " << salary[sm] << std::endl;
 
     return 0;
 }
