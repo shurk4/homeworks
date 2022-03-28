@@ -73,6 +73,7 @@ int main() {
 
     parce(firstName, lastName, date, salary);
 
+    std::cout << "==========================================" << std::endl;
     dataPrint(firstName, lastName, date, salary);
     std::cout << "==========================================" << std::endl;
 
