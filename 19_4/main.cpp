@@ -11,6 +11,7 @@ void fileOpen (std::string& path){
         getline(std::cin, path);
 
         file.open(path);
+
         std::cout << "====================" << std::endl;
         if (!file.is_open()) std::cout << "Could not open the file!" << std::endl;
         else std::cout << "The file os open! " << "Path: " << path <<std::endl;
@@ -20,20 +21,13 @@ void fileOpen (std::string& path){
 }
 
 bool checkPNG (std::string& path){
-    std::ifstream file(path);
     std::string ext;
-    char buffer[4];
 
-    file.read(buffer, 4);
+    std::ifstream file(path);
+    std::getline(file, ext);
     file.close();
 
-    int num = buffer[0];
-
-    ext += buffer[1];
-    ext += buffer[2];
-    ext += buffer[3];
-
-    if(num != -119 || ext != "PNG") return false;
+    if(ext.substr(1,3) != "PNG") return false;
     else return true;
 }
 
