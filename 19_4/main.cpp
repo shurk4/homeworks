@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-//  ..\\file.png
+//  ..\\file.png  ..\\test.jpg
 
 void fileOpen (std::string& path){
     std::ifstream file;
