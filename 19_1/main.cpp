@@ -10,7 +10,6 @@ void findMatches(std::string str, std::string substr, int& counter)
 
     for (int i = 0, j = -1;i < substr.size();){
         while (j > -1 && substr[i] != substr[j]) j = p[j];
-
         i++;
         j++;
         p[i] = j;
@@ -19,7 +18,6 @@ void findMatches(std::string str, std::string substr, int& counter)
     for (int i=0, j = 0;i < str.size();)
     {
         while (j > -1 && str[i] != substr[j]) j = p[j];
-
         i++;
         j++;
         if (j == substr.size()) counter++;
@@ -28,7 +26,7 @@ void findMatches(std::string str, std::string substr, int& counter)
 
 bool openFile (std::string& text){
     std::ifstream file;
-    file.open("E:\\Skillbox\\homeworks\\19_1\\text.txt"); //Пришлось писать полный путь, иначе IDE наглухо зависала
+    file.open("..\\text.txt");
 
     while(!file.eof()){
         std::string word;
@@ -45,7 +43,6 @@ int main() {
     openFile(text);
 
     findMatches(text, find, count);
-
     std::cout << count << " matches found" << std::endl;
 
     return 0;
