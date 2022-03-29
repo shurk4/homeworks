@@ -27,7 +27,14 @@ bool checkPNG (std::string& path){
     std::getline(file, ext);
     file.close();
 
-    if(ext.substr(1,3) != "PNG") return false;
+    int a = ext[0],
+        b = ext[1],
+        c = ext[2],
+        d = ext[3];
+
+    std::cout << "First bytes: " << a << " " << b << " " << c << " " << d << " " << std::endl;
+
+    if(ext[0] != -119 || ext.substr(1,3) != "PNG") return false;
     else return true;
 }
 
