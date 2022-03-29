@@ -30,6 +30,11 @@ void parce (std::vector<std::string>& firstName,
         double salTemp;
 
         getline(file, fromFile);
+        if(fromFile.size() == 0) {
+            file.close();
+            break;
+        }
+
         temp << fromFile;
 
         temp >> fnTemp >> lnTemp >> salTemp >> dateTemp;

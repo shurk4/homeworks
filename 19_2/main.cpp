@@ -26,10 +26,10 @@ void fileCout (std::string& path){
     while(!file.eof()) {
         char buff[20]{0};
 
-        file.seekg(cursor);
+//        file.seekg(cursor);
         file.read(buff, sizeof(buff) - 1);
 
-        cursor = file.tellg();
+//        cursor = file.tellg();
 
         std::cout << buff;
     }
