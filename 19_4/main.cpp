@@ -26,13 +26,13 @@ bool checkPNG (std::string& path){
     std::ifstream file(path);
     std::getline(file, ext);
     file.close();
-
+    //-------------------  ВЫВОД КОДОВ ПЕРВЫХ БАЙТ ФАЙЛА  ---------------------------
     int a = ext[0],
         b = ext[1],
         c = ext[2],
         d = ext[3];
-
     std::cout << "First bytes: " << a << " " << b << " " << c << " " << d << " " << std::endl;
+    //-------------------  ВЫВОД КОДОВ ПЕРВЫХ БАЙТ ФАЙЛА  ---------------------------
 
     if(ext[0] != -119 || ext.substr(1,3) != "PNG") return false;
     else return true;
