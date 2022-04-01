@@ -31,8 +31,7 @@ void parce (std::vector<std::string>& firstName,
 
         getline(file, fromFile);
         if(fromFile.size() == 0) {
-            file.close();
-            break;
+            continue;
         }
 
         temp << fromFile;
