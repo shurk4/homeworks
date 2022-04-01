@@ -1,14 +1,22 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
-//  ..\\file.png  ..\\test.jpg
+//  ..\\file.png  ..\\jpg.png
 
 void fileOpen (std::string& path){
     std::ifstream file;
+    std::string pathExt;
 
     while(!file.is_open()) {
         std::cout << "Enter the path to the file:";
         getline(std::cin, path);
+
+        pathExt = path.substr(path.length() - 3, 3);
+        if (pathExt != "png" && pathExt != "PNG"){
+            std::cout << "This file has a non-PNG extension, try again." << std::endl;
+            continue;
+        }
 
         file.open(path);
 
@@ -21,21 +29,18 @@ void fileOpen (std::string& path){
 }
 
 bool checkPNG (std::string& path){
-    std::string ext;
+    char ext[4];
 
-    std::ifstream file(path);
-    std::getline(file, ext);
+    std::ifstream file(path, std::ios::binary);
+    file.read(ext, sizeof(ext));
     file.close();
-    //-------------------  ВЫВОД КОДОВ ПЕРВЫХ БАЙТ ФАЙЛА  ---------------------------
-    int a = ext[0],
-        b = ext[1],
-        c = ext[2],
-        d = ext[3];
-    std::cout << "First bytes: " << a << " " << b << " " << c << " " << d << " " << std::endl;
-    //-------------------  ВЫВОД КОДОВ ПЕРВЫХ БАЙТ ФАЙЛА  ---------------------------
 
-    if(ext[0] != -119 || ext.substr(1,3) != "PNG") return false;
-    else return true;
+    if(ext[0] != -119 || ext[1] != 'P' || ext[2] != 'N' || ext[3] != 'G') {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 
 int main() {
