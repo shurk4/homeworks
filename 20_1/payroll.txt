@@ -1,2 +1,14 @@
-vasya pupkin 30.12.2021 50000
 Petya Petrov 20.10.2020 5000
+Ivan IvanOv 10.12.2020 10000
+Ilya Sidorov 15.04.2018
+Maksin Smirnov 19.03.2020 12345
+Anton Kalinin 12.04.2018 40000
+Petya Petrov 20.10.2020 5000
+Viktor Pushilin 28.11.2020 2345.234
+Dmitriy Vasilev 29.03.2018 2035.213
+Dmitriy Vasilev 29.03.2018 2035.21
+Viktor Pushilin 28.11.2020 2345.24
+Viktor Pushilin 28.11.2020 2345.24
+Viktor Pushilin 28.11.2020 2345.23
+Petya Petrov 20.10.2020 5000.00
+Maksin Smirnov 19.03.2020 12345.00
