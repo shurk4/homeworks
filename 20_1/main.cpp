@@ -49,7 +49,7 @@ bool dateValid(std::string& date){
 bool salaryValid(std::string& salary){
     bool point = false;
     for(int i = 0; i < salary.length(); i++){
-        if((salary[i] >= '0' && salary[i] <= '9') || (salary[i] == '.' && i != '0')){
+        if((salary[i] >= '0' && salary[i] <= '9') || salary[i] == '.'){
             if(salary[i] == '.' && point == false){
                 point = i;
             } else if(salary[i] == '.' && point == true){

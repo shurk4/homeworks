@@ -12,3 +12,5 @@ Viktor Pushilin 28.11.2020 2345.24
 Viktor Pushilin 28.11.2020 2345.23
 Petya Petrov 20.10.2020 5000.00
 Maksin Smirnov 19.03.2020 12345.00
+Anton Kalinin 12.04.2018 0.40
+Ivan IvanOv 10.12.2020 10000.80
