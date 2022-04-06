@@ -1,3 +1,0 @@
-E:/Skillbox/11_3 IP Valid/cmake-build-debug/CMakeFiles/11_3_IP_Valid.dir
-E:/Skillbox/11_3 IP Valid/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Skillbox/11_3 IP Valid/cmake-build-debug/CMakeFiles/rebuild_cache.dir
