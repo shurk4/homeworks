@@ -1,3 +1,0 @@
-E:/Skillbox/homeworks/12_2 series of numbers/cmake-build-debug/CMakeFiles/12_2_series_of_numbers.dir
-E:/Skillbox/homeworks/12_2 series of numbers/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Skillbox/homeworks/12_2 series of numbers/cmake-build-debug/CMakeFiles/rebuild_cache.dir
