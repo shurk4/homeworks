@@ -37,10 +37,7 @@ void stateRead(std::vector<int>& quantity, int& result) {
         result = -1;
     } else {
         for (int i = 0; i < quantity.size(); i++) {
-            std::string temp;
-            file >> temp;
-            quantity[i] = std::stoi(temp);
-
+            file.read((char*)&quantity[i], sizeof(quantity[i]));
         }
         if ((quantity[0] == 0 && quantity[1] == 0 && quantity[2] == 0 && quantity[3] == 0)){
             std::cout << "ATM is empty!" << std::endl;
@@ -58,7 +55,7 @@ void stateSave(std::vector<int>& quantity) {
         return;
     }
     for(int i = 0; i < quantity.size(); i++){
-        file << quantity[i] << " ";
+        file.write((char*)&quantity[i], sizeof(quantity[i]));
     }
     file.close();
 }
