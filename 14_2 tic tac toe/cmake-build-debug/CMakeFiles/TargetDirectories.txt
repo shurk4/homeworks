@@ -1,3 +1,0 @@
-E:/Skillbox/homeworks/14_2 tic tac toe/cmake-build-debug/CMakeFiles/14_2_tic_tac_toe.dir
-E:/Skillbox/homeworks/14_2 tic tac toe/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Skillbox/homeworks/14_2 tic tac toe/cmake-build-debug/CMakeFiles/rebuild_cache.dir

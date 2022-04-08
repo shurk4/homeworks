@@ -1,3 +1,0 @@
-E:/Skillbox/11_4 result/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Skillbox/11_4 result/cmake-build-debug/CMakeFiles/11_4_result.dir
-E:/Skillbox/11_4 result/cmake-build-debug/CMakeFiles/rebuild_cache.dir

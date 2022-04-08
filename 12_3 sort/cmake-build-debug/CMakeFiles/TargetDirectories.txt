@@ -1,3 +1,0 @@
-E:/Skillbox/homeworks/12_3 sort/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-E:/Skillbox/homeworks/12_3 sort/cmake-build-debug/CMakeFiles/12_3_sort.dir
-E:/Skillbox/homeworks/12_3 sort/cmake-build-debug/CMakeFiles/edit_cache.dir
