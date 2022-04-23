@@ -94,6 +94,7 @@ void add (){
         std::stringstream temp;
 
         std::cout << "Enter the data in the format: First name last name date dd.mm.yyyy salary" << std::endl;
+
         std::getline(std::cin, dataIn);
         temp << dataIn;
 
@@ -135,6 +136,7 @@ void add (){
 
 // Загрузка данных из ведомости
 void load(std::vector<payroll>& workers){
+    workers.clear();
     int i = 0;
     std::ifstream file ("..\\payroll.txt");
     if(file.is_open()){
@@ -179,6 +181,8 @@ int main() {
     std::vector<payroll> workers;
     std::string input;
 
+    load(workers);
+
     do {
         do {
             std::cout
@@ -190,7 +194,6 @@ int main() {
             add();
         }
         if (input == "list") {
-            load(workers);
             print(workers);
         }
     } while (input != "q");

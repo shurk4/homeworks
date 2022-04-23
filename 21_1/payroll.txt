@@ -6,3 +6,6 @@ Petr Petrov 15.04.2021 123600.00
 Viktor Sidorov 19.05.2020 13600.88
 Ivan Ivanov 12.03.2020 10000.00
 Petr Petrov 15.04.2021 123600.00
+Viktor Sidorov 19.05.2020 13600.88
+Ivan Ivanov 12.03.2020 10000.00
+Ivan Ivanov 12.03.2020 10000.00
