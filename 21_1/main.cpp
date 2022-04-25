@@ -186,7 +186,7 @@ int main() {
             std::cout
                     << "Enter \"add\" to add an entry to the payroll, \"list\" to view the payroll or \"q\" for end the programm." << std::endl;
             std::cin >> input;
-            std::cin.ignore(255, '\n'); // на сколько я понял, первое значение указывает на игнорируемых сомволов в потоке. В данной ситуации хатило бы и одного?
+            std::cin.ignore(255, '\n'); // на сколько я понял первое значение указывает количество на игнорируемых символов в потоке. В данной ситуации хватило бы и одного?
         } while (input != "add" && input != "list" && input != "q");
 
         if (input == "add") {
