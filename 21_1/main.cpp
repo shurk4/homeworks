@@ -19,8 +19,6 @@
 Если оно было считает пустым, то можно считать, что файл закончился.
 */
 
-//!!!!!!!!!!!!!!!!!!!! Спросить почему происходит глюк с ADD !!!!!!!!!!!!!!!!!!!!!!!!!
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -188,6 +186,7 @@ int main() {
             std::cout
                     << "Enter \"add\" to add an entry to the payroll, \"list\" to view the payroll or \"q\" for end the programm." << std::endl;
             std::cin >> input;
+            std::cin.ignore(255, '\n');
         } while (input != "add" && input != "list" && input != "q");
 
         if (input == "add") {
