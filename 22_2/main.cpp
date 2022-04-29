@@ -34,20 +34,23 @@
 #include <iostream>
 #include <map>
 
-void qeue (std::multimap<std::string, int>& registry){
+void qeue (std::map<std::string, int>& registry){
     for(auto i = registry.begin(); i != registry.end(); i++){
-        std::cout << i->first << std::endl;
+        std::cout << i->first << " " << i->second << std::endl;
     }
 }
 
-void add (std::multimap<std::string, int>& registry, std::string& input){
-    registry.emplace(input, 0);
+void add (std::map<std::string, int>& registry, std::string& input){
+    registry[input]++;
 }
 
-void next (std::multimap<std::string, int>& registry){
+void next (std::map<std::string, int>& registry){
     if(!registry.empty()) {
         std::cout << registry.begin()->first << std::endl;
-        registry.erase(registry.begin());
+        registry.begin()->second --;
+        if(registry.begin()->second == 0) {
+            registry.erase(registry.begin());
+        }
     }
     else {
         std::cout << "Qeue is empty!" << std::endl;
@@ -55,11 +58,11 @@ void next (std::multimap<std::string, int>& registry){
 }
 
 int main() {
-    std::multimap<std::string, int > registry;
+    std::map<std::string, int > registry;
     std::string input;
 
     do {
-        std::cout << "Ented data:" << std::endl;
+        std::cout << "Enter data:" << std::endl;
         std::cin >> input;
 
         if(input == "next"){
