@@ -48,6 +48,7 @@ void next (std::map<std::string, int>& registry){
     if(!registry.empty()) {
         std::cout << registry.begin()->first << std::endl;
         registry.begin()->second --;
+
         if(registry.begin()->second == 0) {
             registry.erase(registry.begin());
         }
