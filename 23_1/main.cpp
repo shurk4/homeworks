@@ -23,45 +23,46 @@
 #define SATURDAY (6)
 #define SUNDAY (7)
 
-#define PREF "You entered: "
+#define OUT(a) std::cout << "You entered: " << a << std::endl;
 
 int main() {
     int day;
+    std::cout << "Enter the day number: ";
     std::cin >> day;
 
     if(day == MONDAY)
     {
-        std::cout << PREF "Monday" << std::endl;
+        OUT("Monday");
     }
 
     if(day == TUESDAY)
     {
-        std::cout << PREF "Tuesday" << std::endl;
+        OUT("Tuesday");
     }
 
     if(day == WEDNESDAY)
     {
-        std::cout << PREF "Wedbesday" << std::endl;
+        OUT("Wedbesday");
     }
 
     if(day == THURSDAY)
     {
-        std::cout << PREF "Thursday" << std::endl;
+        OUT("Thursday");
     }
 
     if(day == FRIDAY)
     {
-        std::cout << PREF "Friday" << std::endl;
+        OUT("Friday");
     }
 
     if(day == SATURDAY)
     {
-        std::cout << PREF "Saturday" << std::endl;
+        OUT("Saturday");
     }
 
     if(day == SUNDAY)
     {
-        std::cout << PREF "Sunday" << std::endl;
+        OUT("Sunday");
     }
 
     return 0;
