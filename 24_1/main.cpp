@@ -47,14 +47,19 @@ void logprint(std::vector<task>& vec){
     std::cout << "-----------------------" << std::endl;
     std::cout << "Task log:" << std::endl;
     std::cout << "-----------------------" << std::endl;
-    for(int i = 0; i < vec.size(); i++){
-        std::cout << "Name:\t" << vec[i].name << std::endl;
-        std::tm* start = std::localtime(&vec[i].start);
-        std::cout << "Start:\t" << TIME(start) << std::endl;
-        std::tm* stop = std::localtime(&vec[i].stop);
-        std::cout << "Stop:\t" << TIME(stop) << std::endl;
-        taskTime(vec[i].stop, vec[i].start);
+
+    for (int i = 0; i < vec.size(); i++) {
+        if(vec[i].stop >= vec[i].start)
+        {
+            std::cout << "Name:\t" << vec[i].name << std::endl;
+            std::tm *start = std::localtime(&vec[i].start);
+            std::cout << "Start:\t" << TIME(start) << std::endl;
+            std::tm *stop = std::localtime(&vec[i].stop);
+            std::cout << "Stop:\t" << TIME(stop) << std::endl;
+            taskTime(vec[i].stop, vec[i].start);
+        }
     }
+    std::cout << "-----------------------" << std::endl;
 }
 
 int main() {
@@ -79,6 +84,10 @@ int main() {
             std::cout << "Enter the name of the task:" << std::endl;
             std::cin >> log[inProgress].name;
         }
+        else if (input == "status")
+        {
+            logprint(log);
+        }
         else if ((input == "end" || input == "exit") && inProgress != -1)
         {
             std::time_t t = std::time(nullptr);
@@ -87,7 +96,6 @@ int main() {
             inProgress = -1;
         }
     } while (input != "exit");
-    logprint(log);
 
     return 0;
 }
