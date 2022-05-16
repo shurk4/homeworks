@@ -21,7 +21,7 @@
 #include <iomanip>
 #include <vector>
 
-#define AUTO
+//#define AUTO
 
 struct person{
     std::string name;
