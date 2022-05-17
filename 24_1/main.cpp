@@ -58,6 +58,13 @@ void logprint(std::vector<task>& vec){
             std::cout << "Stop:\t" << TIME(stop) << std::endl;
             taskTime(vec[i].stop, vec[i].start);
         }
+        else
+        {
+            std::cout << "-----------------------" << std::endl;
+            std::cout << "Current task:\t" << vec[i].name << std::endl;
+            std::tm *start = std::localtime(&vec[i].start);
+            std::cout << "Started: " << TIME(start) << std::endl;
+        }
     }
     std::cout << "-----------------------" << std::endl;
 }
