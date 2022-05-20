@@ -2,18 +2,12 @@
 
 std::vector<int> buf(8);
 
-void write(std::vector<int>& in)
+void write(int i, int a)
 {
-    for(int i = 0; i < in.size(); i++)
-    {
-        buf[i] = in[i];
-    }
+    buf[i] = a;
 }
 
-void read(std::vector<int>& in)
+int read(int i)
 {
-    for(int i = 0; i < in.size(); i++)
-    {
-        in[i] = buf[i];
-    }
+    return buf[i];
 }

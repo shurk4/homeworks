@@ -34,53 +34,42 @@
 
 #include <string>
 
-#include "..\include\cpu.h"
-#include "..\include\ram.h"
-#include "..\include\disk.h"
-#include "..\include\gpu.h"
-#include "..\include\kbd.h"
+#include "cpu.h"
+#include "disk.h"
+#include "gpu.h"
+#include "kbd.h"
 
 int main()
 {
     std::string com;
-    std::vector<int> in(8);
 
     hello();
 
     do
     {
-        input();
+        in();
         command(com);
 
         if(com == "sum")
         {
-            compure_print(compute(in));
+            compute_print(compute());
         }
         if(com == "save")
         {
-            save(in);
+            save();
         }
         if(com == "load")
         {
-            load(in);
+            load();
         }
         if(com == "input")
         {
-            input(in);
+            input();
         }
         if(com == "display")
         {
-            display(in);
+            display();
         }
-        if(com == "write")
-        {
-            write(in);
-        }
-        if(com == "read")
-        {
-            read(in);
-        }
-
     }while(com != "exit");
 
     bye();

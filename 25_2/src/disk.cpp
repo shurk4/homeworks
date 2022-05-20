@@ -1,18 +1,18 @@
 #include <fstream>
-#include <vector>
 
-#include "..\include\gpu.h"
+#include "ram.h"
+#include "gpu.h"
 
 
 
-void save(std::vector<int>& in)
+void save()
 {
     std::ofstream file ("..\\save.txt");
     if(file.is_open())
     {
-        for(int i = 0; i < in.size(); i++)
+        for(int i = 0; i < 8; i++)
         {
-            file << in[i] << " ";
+            file << read(i) << " ";
         }
     }
     else
@@ -22,14 +22,16 @@ void save(std::vector<int>& in)
     file.close();
 }
 
-void load(std::vector<int>& in)
+void load()
 {
     std::ifstream file ("..\\save.txt");
+    int temp;
     if(file.is_open())
     {
-        for(int i = 0; i < in.size(); i++)
+        for(int i = 0; i < 8; i++)
         {
-            file >> in[i];
+            file >> temp;
+            write(i, temp);
         }
     }
     else

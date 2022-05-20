@@ -1,6 +1,7 @@
-#include <vector>
 #include <iostream>
 #include <thread>
+
+#include "ram.h"
 
 void hello()
 {
@@ -12,12 +13,12 @@ void hello()
     std:: cout << "=)" << std::endl;
 }
 
-void input()
+void in()
 {
     std::cout << "Enter the command:";
 }
 
-void compure_print(int a)
+void compute_print(int a)
 {
     std::cout << "Result: " << a << std::endl;
 }
@@ -27,11 +28,11 @@ void eror()
     std::cout << "Could not open the file!" << std::endl;
 }
 
-void display(std::vector<int>& in)
+void display()
 {
-    for(int i = 0; i < in.size();i++)
+    for(int i = 0; i < 8;i++)
     {
-        std::cout << in[i] << " ";
+        std::cout << read(i) << " ";
     }
     std::cout << std::endl;
 }

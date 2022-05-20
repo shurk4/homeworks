@@ -1,15 +1,13 @@
 #pragma once
 
-#include <vector>
-
 void hello();
 
-void input();
+void in();
 
-void compure_print(int a);
+void compute_print(int a);
 
 void eror();
 
-void display(std::vector<int>& in);
+void display();
 
 void bye();

@@ -1,11 +1,11 @@
-#include <vector>
+#include "ram.h"
 
-int compute (std::vector<int>& in)
+int compute ()
 {
     int result = 0;
-    for(int i = 0; i < in.size(); i++)
+    for(int i = 0; i < 8; i++)
     {
-        result += in[i];
+        result += read(i);
     }
     return result;
 }

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <vector>
+void write(int i, int a);
 
-void write(std::vector<int>& in);
-
-void read(std::vector<int>& in);
+int read(int i);
