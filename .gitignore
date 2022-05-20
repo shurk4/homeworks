@@ -2,5 +2,4 @@
 .vs/
 cmake-build-debug/
 out/
-CMakeLists.txt
 *.log
