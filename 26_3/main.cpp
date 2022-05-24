@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 
 #define NEWLINE std::cout << std::endl;
 
@@ -65,6 +66,8 @@ public:
 
     void setSize(int displayX, int displayY, int x, int y)
     {
+        assert(x > 0);
+        assert(y > 0);
         if(startX + x > displayX)
         {
             sizeX = displayX - startX;
