@@ -181,7 +181,7 @@ int main()
 
     forest->setName();
 //    forest->setAutoName(); // автоматическое именовение эльфов
-    forest->print(); // вывод информации о эльфах
+//    forest->print(); // вывод информации о эльфах
 
     std::cout << "Enter a name to search:" << std::endl;
     std::cin >> input;
