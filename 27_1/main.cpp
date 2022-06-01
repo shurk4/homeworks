@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cassert>
 
-int count = 0; // для автоматического присвоения имён
-
 class Branch
 {
     int deep;
@@ -95,7 +93,7 @@ public:
         }
     }
 
-    void setAutoName()
+    void setAutoName(int &count)
     {
         for(int i = 0; i < quantity; i++)
         {
@@ -107,7 +105,7 @@ public:
                     branch[i]->elfName = "Elf" + std::to_string(count);
                 }
                 std::cout << std::endl;
-                branch[i]->setAutoName();
+                branch[i]->setAutoName(count);
             }
         }
     }
@@ -180,8 +178,11 @@ int main()
     std::cout << "Enter the names of the elves" << std::endl;
 
     forest->setName();
-//    forest->setAutoName(); // автоматическое именовение эльфов
-//    forest->print(); // вывод информации о эльфах
+
+//    int count = 0;              // автоматическое именовение эльфов
+//    forest->setAutoName(count); // автоматическое именовение эльфов
+
+//    forest->print();            // вывод информации о эльфах
 
     std::cout << "Enter a name to search:" << std::endl;
     std::cin >> input;
