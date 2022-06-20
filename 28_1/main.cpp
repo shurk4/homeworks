@@ -77,13 +77,6 @@ public:
         return time;
     }
 
-    void printData()
-    {
-
-        std::cout << name << "\n # " << number << "\n speed " << speed << "\n Current distance " << currentDistance
-                  << "\n Time " << time / 1000 << std::endl;
-    }
-
     void swimm()
     {
         int step = 1000;
