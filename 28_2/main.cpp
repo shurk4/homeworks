@@ -25,20 +25,20 @@ std::mutex station;
 
 class Train
 {
-    int number;
+    char label;
     int travelTime;
 
 public:
 
-    Train(int &num):number(num + 1)
+    Train(int &num):label('A' + num)
     {
-        std::cout << "Enter the travel time of the train " << number << ": " << std::endl;
+        std::cout << "Enter the travel time of the train " << label << ": " << std::endl;
         std::cin >> travelTime;
     }
 
-    int getNumber()
+    char getLabel()
     {
-        return number;
+        return label;
     }
 
     int getTravelTime()
@@ -52,7 +52,7 @@ void move(Train *train)
     std::string command;
     std::this_thread::sleep_for(std::chrono::seconds(train->getTravelTime()));
     station.lock();
-    std::cout << "The train " << train->getNumber() << " has arrived at the station!" <<std::endl;
+    std::cout << "The train " << train->getLabel() << " has arrived at the station!" <<std::endl;
     do
     {
         std::cout << "Enter the depart command: ";
