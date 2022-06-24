@@ -98,7 +98,6 @@ public:
 void kitchen(std::vector<Order> &_orders, std::vector<Order> &_readyOrders)
 {
     int counter = 0;
-//    std::srand(std::time(nullptr));
 
     do {
         if(!_orders.empty())
@@ -125,7 +124,6 @@ void kitchen(std::vector<Order> &_orders, std::vector<Order> &_readyOrders)
             counter++;
         }
     } while (counter < 10);
-
 }
 
 void manager(std::vector<Order> &_orders)
@@ -179,15 +177,12 @@ int main() {
     std::vector<Order> deliveredOrders;
 
     std::thread t1 = std::thread(manager, std::ref(orders));
+    t1.detach();
 
     std::thread t2 = std::thread(kitchen, std::ref(orders), std::ref(readyOrders));
-
-    t1.detach();
     t2.detach();
 
     courier(readyOrders, deliveredOrders);
-
-
 
     console.lock();
     std::cout << std::endl << "Delivered orders:"  << deliveredOrders.size()<< std::endl;
