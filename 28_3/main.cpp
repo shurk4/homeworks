@@ -20,7 +20,7 @@
 #include <mutex>
 
 std::mutex console;
-std::mutex kitchenLock;
+std::mutex ordersLock;
 std::mutex readyOrdersLock;
 
 enum Dish
@@ -32,18 +32,14 @@ enum Dish
     SUSHI
 };
 
-class Order;
-
-std::vector<Order> readyOrders;
-std::vector<Order> deliveredOrders;
-
 class Order
 {
+    int number;
     Dish dish;
 
 public:
 
-    Order()
+    Order(int &num) : number(num)
     {
         int dishNum = std::rand() %5;
 
@@ -92,90 +88,115 @@ public:
             return "sushi";
         }
     }
+
+    int getNumber()
+    {
+        return number;
+    }
 };
 
-void kitchen(int num)
+void kitchen(std::vector<Order> &_orders, std::vector<Order> &_readyOrders)
 {
-    std::srand(std::time(nullptr));
-    int timer = std::rand() %11 + 5;
-    Order order;
+    int counter = 0;
+//    std::srand(std::time(nullptr));
 
-    console.lock();
-    std::cout << "Order # " << num << ":  " << order.getDish() << std::endl;
-    console.unlock();
+    do {
+        if(!_orders.empty())
+        {
+            int timer = std::rand() % 11 + 5;
 
-    kitchenLock.lock();
+            console.lock();
+            std::cout << "- Kitchen cooking order # " << _orders[0].getNumber() << ":  " << _orders[0].getDish() << std::endl;
+            console.unlock();
 
-    console.lock();
-    std::cout << "- Kitchen cooking order #" << num <<":  " << order.getDish() << std::endl;
-    console.unlock();
+            std::this_thread::sleep_for(std::chrono::seconds(timer));
 
-    std::this_thread::sleep_for(std::chrono::seconds( timer));
+            readyOrdersLock.lock();
+            _readyOrders.push_back(_orders[0]);
+            readyOrdersLock.unlock();
 
-    readyOrdersLock.lock();
-    readyOrders.push_back(order);
-    readyOrdersLock.unlock();
+            console.lock();
+            std::cout << "- Order # " << _orders[0].getNumber() << ": " << _orders[0].getDish() << " ready" << std::endl;
+            console.unlock();
 
-    console.lock();
-    std::cout << "Order #" << num << ": " << order.getDish() << " ready" << std::endl;
-    console.unlock();
+            ordersLock.lock();
+            _orders.erase(_orders.begin());
+            ordersLock.unlock();
+            counter++;
+        }
+    } while (counter < 10);
 
-    kitchenLock.unlock();
 }
 
-void manager()
+void manager(std::vector<Order> &_orders)
 {
     int orderNum = 0;
 
     do
     {
         int timer = std::rand() %6 + 5;
+
         orderNum++;
 
-        std::thread cooking(kitchen, orderNum);
-        cooking.detach();
+        ordersLock.lock();
+        _orders.push_back(Order(orderNum));
+        ordersLock.unlock();
+
+        console.lock();
+        std::cout << "Order # " << orderNum << ":  " << _orders[_orders.size() - 1].getDish() << std::endl;
+        console.unlock();
 
         std::this_thread::sleep_for(std::chrono::seconds( timer));
     } while (orderNum < 10);
 }
 
-void courier()
+void courier(std::vector<Order> &_readyOrders, std::vector<Order> &_deliveredOrders)
 {
     do
     {
         std::this_thread::sleep_for(std::chrono::seconds(15));
 
         console.lock();
-        std::cout << "Courier delivered orders: " << std::endl;
+        std::cout << "\t - Courier delivered orders: " << std::endl;
         readyOrdersLock.lock();
-        for (int i = 0; i < readyOrders.size(); i++) {
-            std::cout << "\t" << readyOrders[i].getDish() << std::endl;
-            deliveredOrders.push_back(readyOrders[i]);
+        for (int i = 0; i < _readyOrders.size(); i++) {
+            std::cout << "\t\t#" << _readyOrders[i].getNumber() << " " << _readyOrders[i].getDish() << std::endl;
+            _deliveredOrders.push_back(_readyOrders[i]);
         }
 
-        readyOrders.clear();
+        _readyOrders.clear();
 
         readyOrdersLock.unlock();
         console.unlock();
-    } while (deliveredOrders.size() < 10);
+    } while (_deliveredOrders.size() < 10);
 }
 
 int main() {
     std::srand(std::time(nullptr));
 
-    std::thread t = std::thread(manager);
+    std::vector<Order> orders;
+    std::vector<Order> readyOrders;
+    std::vector<Order> deliveredOrders;
 
-    courier();
+    std::thread t1 = std::thread(manager, std::ref(orders));
 
-    t.join();
+    std::thread t2 = std::thread(kitchen, std::ref(orders), std::ref(readyOrders));
+
+    t1.detach();
+    t2.detach();
+
+    courier(readyOrders, deliveredOrders);
+
+
 
     console.lock();
     std::cout << std::endl << "Delivered orders:"  << deliveredOrders.size()<< std::endl;
-    console.unlock();
+
     for(int i = 0; i < deliveredOrders.size(); i++)
     {
         std::cout << deliveredOrders[i].getDish() << std::endl;
     }
+    console.unlock();
 
     return 0;
 }
