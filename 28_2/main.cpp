@@ -47,27 +47,39 @@ public:
     }
 };
 
-void move(Train *train)
+void move(Train *train, bool &platformBusy)
 {
     std::string command;
     std::this_thread::sleep_for(std::chrono::seconds(train->getTravelTime()));
+
+    if(platformBusy)
+    {
+        std::cout << "Train " << train->getLabel() << " is waiting for the station" << std::endl;
+    }
     station.lock();
+
+    platformBusy = true;
+
     std::cout << "The train " << train->getLabel() << " has arrived at the station!" <<std::endl;
     do
     {
-        std::cout << "Enter the depart command: ";
+        std::cout << "Enter the depart command: " << std::endl;
         std::cin >> command;
         if(command != "depart")
         {
             std::cout << "Wrong input! Try again." << std::endl;
         }
     } while (command != "depart");
+
+    std::cout << "Train " << train->getLabel() << " Train A departs from the station." << std::endl;
     station.unlock();
+    platformBusy = false;
 }
 
 int main() {
     Train **trains = new Train*[3];
     std::vector<std::thread> threads;
+    bool platfomBusy = false;
 
     for(int i = 0; i < 3; i++)
     {
@@ -76,7 +88,7 @@ int main() {
 
     for(int i = 0; i < 3; i++)
     {
-        threads.push_back(std::thread (move, std::cref(trains[i])));
+        threads.push_back(std::thread (move, std::ref(trains[i]), std::ref(platfomBusy)));
     }
 
     for(int i = 0; i < 3; i++)
