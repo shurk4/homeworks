@@ -91,7 +91,7 @@ public:
         setBasic("circle");
         std::cout << "Enter the circle radius:";
         std::cin >> sizeX;
-        area = atan(1) * sizeX * sizeX;
+        area = (atan(1) * 4) * (sizeX * sizeX);
     }
 
     void getResult()
