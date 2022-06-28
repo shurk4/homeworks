@@ -91,6 +91,7 @@ public:
         setBasic("circle");
         std::cout << "Enter the circle radius:";
         std::cin >> sizeX;
+//        area = atan(1) * sizeX * sizeX;  ошибка
         area = (atan(1) * 4) * (sizeX * sizeX);
     }
 
@@ -130,8 +131,9 @@ public:
         setBasic("triangle");
         std::cout << "Enter the length of the triangle edge :";
         std::cin >> sizeX;
-        fieldX = sizeX / 2;
+        fieldX = sizeX;
         fieldY = (sizeX * std::sqrt(3)) / 2;
+//        fieldY = sqrt((sizeX * sizeX) - (pow(sizeX/2,2)));
         area = sizeX * sizeX * std::sqrt(3) / 4;
     }
 
