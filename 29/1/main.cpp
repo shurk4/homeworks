@@ -57,7 +57,7 @@ public:
 };
 
 int main() {
-    Dog dog("Vasya");
+    Dog dog("Steve");
 
     dog.showTalens();
 
