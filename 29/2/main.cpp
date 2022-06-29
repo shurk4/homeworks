@@ -19,8 +19,6 @@ public:
         return bbd;
     }
     virtual std::string type() = 0; // — название конкретного типа, например, вернуть строку Triangle для класса Triangle;
-
-
 };
 
 class Circle : virtual public Shape
