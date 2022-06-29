@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Talent
 {
@@ -37,27 +38,41 @@ public:
 class Dog
 {
     std::string name = "Steve";
-    Talent *talent[2];
+    std::vector<Talent*> talents;
 
 public:
     Dog(std::string _name = "Steve") : name(_name)
     {
-        talent[0] = new Dancing;
-        talent[1] = new Swimming;
+    }
+
+    void addTalents(Talent *talent)
+    {
+        talents.push_back(talent);
     }
 
     void showTalens()
     {
         std::cout << "This is " << name << " and it has some talents:" << std::endl;
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < talents.size(); i++)
         {
-            std::cout << "It can \"" << talent[i]->getTalent() << "\"" << std::endl;
+            std::cout << "It can \"" << talents[i]->getTalent() << "\"" << std::endl;
+        }
+    }
+
+    ~Dog()
+    {
+        for(int i = 0; i < talents.size(); i++)
+        {
+            delete talents[i];
         }
     }
 };
 
 int main() {
     Dog dog("Steve");
+
+    dog.addTalents(new Dancing);
+    dog.addTalents(new Swimming);
 
     dog.showTalens();
 
