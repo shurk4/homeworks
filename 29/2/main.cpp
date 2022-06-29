@@ -104,28 +104,8 @@ public:
             b = sizeB;
             c = sizeC;
             p = (a + b + c) / 2;
-// описывающий квадрат по задаче
             bbd.height = (a * b * c / (4 * sqrt(p*(p - a)*(p - b)*(p - c)))) * 2;
             bbd.width = bbd.height;
-
-// описывающий прямоугольник
-//            if(a > b && a > c)
-//            {
-//                bbd.height = a;
-//                bbd.width = b;
-//            }
-//            else if(b > a && b > c)
-//            {
-//                bbd.height = b;
-//                bbd.width = a;
-//            }
-//            else
-//            {
-//                bbd.height = c;
-//                bbd.width = b;
-//            }
-//
-//            bbd.width = sqrt((a * a) - (pow(b / 2,2)));
         }
         else
         {
