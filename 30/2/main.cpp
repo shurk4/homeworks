@@ -23,7 +23,6 @@ std::string titleFind(std::string &_in)
 
 int main() {
     cpr::Response r = cpr::Get(cpr::Url("http://httpbin.org/html"));
-    std::cout << r.text << std::endl << std::endl;
 
     std::cout << "Header: \"" << titleFind(r.text) << "\"" << std::endl;
 
