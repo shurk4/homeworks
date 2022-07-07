@@ -59,7 +59,5 @@ int main() {
 
     } while (input != "exit");
 
-
-    std::cout << "Hello, World!" << std::endl;
     return 0;
 }
