@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+message Record
+{
+  required int32 year = 1;
+  required string adress = 2;
+  optional string age = 3;
+  optional bool ved = 4;
+}
