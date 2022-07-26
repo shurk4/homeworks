@@ -92,7 +92,7 @@ void createJson ()
     }
     else
     {
-        std::cout << "Coud not open the file" << std::endl;
+        std::cout << "Coud not open the file!" << std::endl;
     }
     file.close();
 }
